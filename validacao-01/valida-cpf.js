@@ -24,7 +24,7 @@ function validaCPF (cpf) {
   let contadorDez = 10;
   let contadorOnze = 11;
 
-  let primeiroDigito = cpfValido.reduce((acumulador, num, indice)=> {
+  let primeiroDigito = cpfValido.reduce((acumulador, num)=> {
     acumulador += Number(num)*contadorDez;
     contadorDez--;
 
@@ -36,7 +36,7 @@ function validaCPF (cpf) {
 
   cpfValido.push(primeiroDigito.toString());
   
-  let segundoDigito = cpfValido.reduce((acumulador, num, indice)=> {
+  let segundoDigito = cpfValido.reduce((acumulador, num)=> {
 
     acumulador += Number(num)*contadorOnze;
     contadorOnze--;
@@ -54,6 +54,9 @@ function validaCPF (cpf) {
     console.log( `O cpf: ${cpfValido.join('').replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, `$1.$2.$3-$4`)} é válido!`);
   }
 }
+
+validaCPF.prototype.criaDigito = function (){};
+validaCPF.prototype.verificaCpfDigitado = function() {};
 
 
 //validaCPF('705.484.450-52');
